@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: config-bus-client
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    virtual-host: /
+    port: 5672
+  cloud:
+    stream:
+      #如果项目同时引入了rabbit与kafka 则需要指出默认的binder是哪一个
+      default-binder: rabbit
+    config:
+#      uri: http://localhost:60002
+      discovery:
+        enabled: true  #开启eureka拉取注册列表
+        service-id: config-bus-server #config-server在eureka注册的微服务名称
+      profile: dev
+      label: main #每次从main分支获取配置信息
+      name: config-consumer
+
+
+server:
+  port: 60055
+
+myWords: ${words}
+
+#开启actuator(用于配置中心属性的动态刷新机制)
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+#借助eureka注册中心实现config组件的高可用
+#首先需要在config-server与config-client引入eureka-client的包，做好相关配置
+#其次在config-client的spring.cloud.config.discovery开启服务注册与发现，然后配置config-server微服务名称
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/

@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eureka
+
+server:
+  port: 20000
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false  #关闭自身向别的节点注册
+    fetch-registry: false  #是否去拉取服务注册表
+  server:
+    enable-self-preservation: false  #关闭服务自保（强制关闭服务自保，自动开关失效）
+    eviction-interval-timer-in-ms: 10000  #每隔多久触发一次服务剔除的job

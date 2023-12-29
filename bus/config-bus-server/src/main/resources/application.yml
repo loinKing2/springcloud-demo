@@ -1,0 +1,39 @@
+spring:
+  rabbitmq:
+    virtual-host: /
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  application:
+    name: config-bus-server
+  cloud:
+    stream:
+      default-binder: rabbit
+    config:
+      server:
+        git:
+          uri: https://github.com/loinKing2/config-repo.git
+          #如果用到了子目录，则要用到如下的配置
+          #search-paths: abc,def
+          force-pull: true #强制拉取资源文件
+server:
+  port: 60105
+
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/

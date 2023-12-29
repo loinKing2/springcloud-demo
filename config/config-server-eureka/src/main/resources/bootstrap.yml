@@ -1,0 +1,5 @@
+#配置文件加载顺序
+
+# 1. bootstrap.yml > application.properties > application.yml
+encrypt:
+  key: 20051001

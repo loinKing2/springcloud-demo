@@ -1,0 +1,36 @@
+server:
+  port: 40001
+spring:
+  application:
+    name: feign-consumer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/
+      #defaultZone: http://localhost:20001/eureka/,http://localhost:20002/eureka/
+
+
+feign-client:
+  ribbon:
+    #每台机器最大得重试次数
+    MaxAutoRetries: 2
+    #可以再重试几台机器
+    MaxAutoRetriesNextServer: 2
+    #连接超时 1000ms
+    ConnectTimeout: 1000
+    # 业务处理超时时间
+    ReadTimeout: 1000
+    #是否可以在每个http得method进行重试，默认只会在GET方式进行重试
+    OkToRetryOnAllOperations: true
+
+#Feign的超时判定  优先级大于ribbon
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 1000
+        read-timeout: 3000
+      feign-client:  #优先级大于ribbon
+        connect-timeout: 1000
+        read-timeout: 1000  #覆盖之前的ribbon之前3000的配置

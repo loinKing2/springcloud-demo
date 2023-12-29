@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+#      uri: http://localhost:60002
+      discovery:
+        enabled: true  #开启eureka拉取注册列表
+        service-id: config-server-eureka #config-server在eureka注册的微服务名称
+      profile: dev
+      label: main #每次从main分支获取配置信息
+      name: config-consumer
+
+
+server:
+  port: 60020
+
+myWords: ${words}
+
+#开启actuator(用于配置中心属性的动态刷新机制)
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+#借助eureka注册中心实现config组件的高可用
+#首先需要在config-server与config-client引入eureka-client的包，做好相关配置
+#其次在config-client的spring.cloud.config.discovery开启服务注册与发现，然后配置config-server微服务名称
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/

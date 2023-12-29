@@ -1,0 +1,15 @@
+server:
+  port: 21005
+
+spring:
+  application:
+    name: ribbon-consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/
+
+#指定全局的负载均衡策略
+eureka-client:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule

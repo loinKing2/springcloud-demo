@@ -1,0 +1,10 @@
+#配置文件加载顺序
+
+# 1. bootstrap.yml > application.properties > application.yml
+encrypt:
+  key: 20051001
+
+
+#调用config-server的http接口进行数据的加解密
+#http://localhost:60002/incrypt/ POST 数据放在body当中
+#http://localhost:60002/decrypt/ POST 数据放在body当中

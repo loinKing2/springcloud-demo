@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-consumer
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/loinKing2/config-repo.git
+          #如果用到了子目录，则要用到如下的配置
+          #search-paths: abc,def
+          force-pull: true #强制拉取资源文件
+
+server:
+  port: 60002

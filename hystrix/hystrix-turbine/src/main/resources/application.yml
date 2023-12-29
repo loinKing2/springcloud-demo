@@ -1,0 +1,61 @@
+server:
+  port: 52000
+
+management:
+  server:
+    port: 52001
+
+
+spring:
+  application:
+    name: hystrix-turbine
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/
+
+
+#指定了所需监控的服务名
+turbine:
+  app-config: hystrix-consumer
+  cluster-name-expression: "default"
+  combine-host-port: true #将端口和hostname作为区分不同服务的条件，默认只使用host
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
+
+
+#开启feign下面的hystrix的功能
+feign:
+  hystrix:
+    enabled: true
+#开启服务降级
+hystrix:
+  command:
+    default:
+      fallback:
+        enabled: true
+      execution:
+        timeout:
+          enabled: true  #开启超时
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000  #超时2s
+            interruptOnTimeout: true  #超时以后，终止线程
+            interruptOnFutureCancel: true #取消的时候终止线程
+    MyService#retry(int): #针对方法上的签名
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+
+#ribbon的超时重试机制
+feign-client:
+  ribbon:
+    MaxAutoRetires: 0
+    MaxAutoRetriesNextServer: 0
+    ConnectTimeout: 1000
+    ReadTimeout: 8000
+    OkToRetryOnAllOperations: false
