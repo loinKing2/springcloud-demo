@@ -1,0 +1,42 @@
+server:
+  port: 7777
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          enabled: true  #开启自动创建路由规则
+          lower-case-service-id: true  #开启此配置，在客户端调用请求的时候，可以将大小写自动进行转换，不配置则服务名必须大写
+      routes:
+        - id: feignClient
+          uri:
+            lb://FEIGN-CLIENT
+          predicates:
+            - Path=/yml/**
+          filters:
+            #下面这个属性表示，将路径参数的第一个替换为将要调用的微服务名称 例如源地址：http://localhost/yml/xxx -> http://localhost/{MSERVICENAME}/xxx
+            - StripPrefix=1
+
+
+#开启actuator(用于配置中心属性的动态刷新机制)
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+#借助eureka注册中心实现config组件的高可用
+#首先需要在config-server与config-client引入eureka-client的包，做好相关配置
+#其次在config-client的spring.cloud.config.discovery开启服务注册与发现，然后配置config-server微服务名称
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/
