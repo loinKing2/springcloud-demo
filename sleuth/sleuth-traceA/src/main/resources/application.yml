@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: sleuth-traceA
+  sleuth:
+    sampler:
+      probability: 1  #sleuth采样率
+
+
+server:
+  port: 6582
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/
+
+logging:
+  file:
+    name: ${spring.application.name}.log
+
+info:
+  app:
+    name: sleuth-traceA
+    description: test
+
+
+
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

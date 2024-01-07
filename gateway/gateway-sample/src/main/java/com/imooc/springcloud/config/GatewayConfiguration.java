@@ -15,7 +15,7 @@ public class GatewayConfiguration {
     @Autowired
     private TimerFilter timerFilter;
     @Autowired
-    private GlobalGatewayFilter globalGatewayFilter;
+    private AuthFilter authFilter;
     /**
      * 自定义断言规则
      * @param builder
@@ -33,6 +33,7 @@ public class GatewayConfiguration {
                         .filters(f -> f.stripPrefix(1) //会将java替换为具体的微服务名称
                                 .addResponseHeader("java-param","gateway-config")
                                 .filter(timerFilter)
+                                .filter(authFilter)  //权限验证
                         )
                         .uri("lb://FEIGN-CLIENT")
                 ).route(r -> r.path("/seckill/**")

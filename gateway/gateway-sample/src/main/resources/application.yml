@@ -2,6 +2,10 @@ server:
   port: 7777
 
 spring:
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
   application:
     name: gateway-service
   cloud:
@@ -20,6 +24,17 @@ spring:
           filters:
             #下面这个属性表示，将路径参数的第一个替换为将要调用的微服务名称 例如源地址：http://localhost/yml/xxx -> http://localhost/{MSERVICENAME}/xxx
             - StripPrefix=1
+            -
+        - id: feignapi
+          uri: lb://FEIGN-SERVICE-PROVIDER
+          predicates:
+            - Path=/feign-api/**
+            - StripPrefix=1
+            - name=RequestRateLimiter
+          args:
+            key-resolver: '#{@remoteAddrKeyResolver}'
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
 
 
 #开启actuator(用于配置中心属性的动态刷新机制)

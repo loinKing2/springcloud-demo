@@ -2,21 +2,19 @@ package com.imooc.springcloud;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
 @RestController
-public class Controller {
+public class Controller implements IAuthService{
     @Autowired
     private JWTService jwtService;
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @PostMapping("/login")
+
     public AuthResponse login(@RequestParam String username,@RequestParam String password){
         Account acct = Account.builder()
                     .username(username)
@@ -31,7 +29,6 @@ public class Controller {
         return AuthResponse.builder().account(acct).code(ResponseCode.SUCCESS).build();
     }
 
-    @PostMapping("/refresh")
     public AuthResponse refreshToken(String refreshToken){
         Account o = (Account)redisTemplate.opsForValue().get(refreshToken);
         if (o == null){
@@ -46,8 +43,7 @@ public class Controller {
         return AuthResponse.builder().account(o).code(ResponseCode.SUCCESS).build();
     }
 
-    @GetMapping("/verify")
-    public AuthResponse verifyToken(String token,String username){
+    public AuthResponse authVerifyToken(String token,String username){
         boolean verifyRes = jwtService.verify(token, username);
         return AuthResponse.builder()
                 .code(verifyRes ? ResponseCode.SUCCESS : ResponseCode.INVALID_TOKEN)

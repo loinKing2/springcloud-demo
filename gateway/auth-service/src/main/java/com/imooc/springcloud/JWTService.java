@@ -12,7 +12,7 @@ import java.util.Date;
 @Slf4j
 public class JWTService {
 
-    //生成环境不要使用,要从外部传入
+    //生产环境不要使用,要从外部传入
     private static final String KEY = "changeIT";
     private static final String ISSUER = "ta1o";
 
@@ -63,5 +63,4 @@ public class JWTService {
         }
         return false;
     }
-
 }

@@ -9,14 +9,14 @@ public interface IAuthService {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    AuthResponse login(@RequestParam String username,@RequestParam String password);
+    AuthResponse login(@RequestParam("username") String username,@RequestParam("password") String password);
 
     @GetMapping("/verify")
     @ResponseBody
-    AuthResponse authVerifyToken(@RequestParam String token,String username);
+    AuthResponse authVerifyToken(@RequestParam("token") String token,@RequestParam("username") String username);
 
 
     @PostMapping("/refreshToken")
     @ResponseBody
-    AuthResponse refreshToken(String refreshToken);
+    AuthResponse refreshToken(@RequestParam("refreshToken") String refreshToken);
 }

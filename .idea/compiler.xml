@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_ADDITIONAL_VM_OPTIONS" value="-Djps.track.ap.dependencies=false" />
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
@@ -22,6 +23,9 @@
         <module name="hystrix-fallback" />
         <module name="config-server-eureka" />
         <module name="eureka-server-peer" />
+        <module name="sleuth-traceA" />
+        <module name="sleuth-traceB" />
+        <module name="zipkin-server" />
         <module name="eureka-consumer" />
         <module name="feign-consumer" />
         <module name="config-bus-server" />
