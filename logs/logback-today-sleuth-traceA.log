@@ -1,0 +1,106 @@
+13:10:29.627 [main] INFO  c.i.springcloud.SleuthTraceAMain - No active profile set, falling back to default profiles: default 
+13:10:30.735 [main] WARN  o.s.b.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format. 
+13:10:31.106 [main] INFO  o.s.c.context.scope.GenericScope - BeanFactory id=ddac5dc3-9cdd-3855-9aca-cf08c4d6c8a5 
+13:10:32.082 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 6582 (http) 
+13:10:32.094 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-6582"] 
+13:10:32.095 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+13:10:32.095 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.34] 
+13:10:32.265 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+13:10:32.266 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2603 ms 
+13:10:32.487 [main] WARN  c.n.c.s.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+13:10:32.488 [main] INFO  c.n.c.s.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+13:10:32.499 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@d3c84842 
+13:10:34.244 [main] WARN  c.n.c.s.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+13:10:34.244 [main] INFO  c.n.c.s.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+13:10:34.597 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+13:10:35.437 [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses Jersey 
+13:10:35.482 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project. 
+13:10:36.068 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 17 endpoint(s) beneath base path '/actuator' 
+13:10:36.204 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING 
+13:10:36.238 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1 
+13:10:36.560 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson 
+13:10:36.561 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson 
+13:10:36.663 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml 
+13:10:36.663 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml 
+13:10:36.823 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+13:10:37.122 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false 
+13:10:37.123 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null 
+13:10:37.123 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false 
+13:10:37.123 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false 
+13:10:37.124 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true 
+13:10:37.124 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true 
+13:10:37.124 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server 
+13:10:37.266 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200 
+13:10:37.269 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30 
+13:10:37.271 [main] INFO  c.n.d.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4 
+13:10:37.277 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1704604237276 with initial instances count: 1 
+13:10:37.287 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application SLEUTH-TRACEA with eureka with status UP 
+13:10:37.288 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1704604237288, current=UP, previous=STARTING] 
+13:10:37.290 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582: registering service... 
+13:10:37.315 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582 - registration status: 204 
+13:10:37.321 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-6582"] 
+13:10:37.354 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 6582 (http) with context path '' 
+13:10:37.356 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 6582 
+13:10:37.769 [main] INFO  c.i.springcloud.SleuthTraceAMain - Started SleuthTraceAMain in 10.276 seconds (JVM running for 11.466) 
+13:11:09.889 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application SLEUTH-TRACEA with eureka with status DOWN 
+13:11:09.890 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1704604269890, current=DOWN, previous=UP] 
+13:11:09.891 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582: registering service... 
+13:11:09.896 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor' 
+13:11:09.897 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582 - registration status: 204 
+13:11:10.902 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ... 
+13:11:13.905 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Unregistering ... 
+13:11:13.909 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582 - deregister  status: 200 
+13:11:13.919 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient 
+13:11:21.554 [main] INFO  c.i.springcloud.SleuthTraceAMain - No active profile set, falling back to default profiles: default 
+13:11:22.574 [main] WARN  o.s.b.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format. 
+13:11:22.849 [main] INFO  o.s.c.context.scope.GenericScope - BeanFactory id=ddac5dc3-9cdd-3855-9aca-cf08c4d6c8a5 
+13:11:23.577 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 6582 (http) 
+13:11:23.585 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-6582"] 
+13:11:23.585 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+13:11:23.586 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.34] 
+13:11:23.731 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+13:11:23.731 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2139 ms 
+13:11:23.880 [main] WARN  c.n.c.s.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+13:11:23.881 [main] INFO  c.n.c.s.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+13:11:23.892 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@ad437799 
+13:11:25.516 [main] WARN  c.n.c.s.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+13:11:25.517 [main] INFO  c.n.c.s.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+13:11:25.799 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+13:11:26.790 [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses Jersey 
+13:11:26.829 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project. 
+13:11:27.409 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 17 endpoint(s) beneath base path '/actuator' 
+13:11:27.514 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING 
+13:11:27.555 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1 
+13:11:27.881 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson 
+13:11:27.882 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson 
+13:11:27.969 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml 
+13:11:27.970 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml 
+13:11:28.124 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+13:11:28.398 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false 
+13:11:28.398 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null 
+13:11:28.398 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false 
+13:11:28.398 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false 
+13:11:28.399 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true 
+13:11:28.399 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true 
+13:11:28.400 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server 
+13:11:28.531 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200 
+13:11:28.537 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30 
+13:11:28.540 [main] INFO  c.n.d.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4 
+13:11:28.545 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1704604288544 with initial instances count: 2 
+13:11:28.550 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application SLEUTH-TRACEA with eureka with status UP 
+13:11:28.550 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1704604288550, current=UP, previous=STARTING] 
+13:11:28.552 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582: registering service... 
+13:11:28.582 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582 - registration status: 204 
+13:11:28.590 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-6582"] 
+13:11:28.628 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 6582 (http) with context path '' 
+13:11:28.629 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 6582 
+13:11:29.052 [main] INFO  c.i.springcloud.SleuthTraceAMain - Started SleuthTraceAMain in 9.325 seconds (JVM running for 10.632) 
+13:16:14.602 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application SLEUTH-TRACEA with eureka with status DOWN 
+13:16:14.603 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1704604574603, current=DOWN, previous=UP] 
+13:16:14.604 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582: registering service... 
+13:16:14.612 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor' 
+13:16:14.612 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582 - registration status: 204 
+13:16:15.622 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ... 
+13:16:18.623 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Unregistering ... 
+13:16:18.628 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_SLEUTH-TRACEA/DESKTOP-3SMHR8N:sleuth-traceA:6582 - deregister  status: 200 
+13:16:18.640 [SpringContextShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient 

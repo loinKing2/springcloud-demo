@@ -13,6 +13,7 @@
         <module name="config-client" />
         <module name="gateway-sample" />
         <module name="eureka-server" />
+        <module name="stream-sample" />
         <module name="feign-client" />
         <module name="hystrix-turbine" />
         <module name="config-server" />
