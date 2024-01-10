@@ -105,6 +105,8 @@ public class StreamConsume {
 
     /**
      * 处理降级流程，在application.yml当中配置重试相关，如果在规定的次数内消费者仍然抛出异常，则会进入到此方法当中处理降级流程
+     * 这里的inputChannel参数既不是topic,也不是group名称，而是<topicname></topicname>.<groupname></groupname>.errors的格式
+     * 此方法是主方法异常并超过最大重试次数时会调用降级的流程
      * @param message
      */
     @ServiceActivator(inputChannel = "fallback_topic.fallback-group.errors")

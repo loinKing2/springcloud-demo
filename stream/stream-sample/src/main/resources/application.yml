@@ -21,16 +21,17 @@ spring:
               auto-bind-dlq: true  #这里一定要为消费端设置自动绑定dlq，才能启用死信队列
           delayed-topic-producer:
             producer:
+              #开启这个的时候也要注意rabbitmq是否启动了延迟队列的插件，如果没有，则需要从官网下载后启动这个插件才能使用延迟队列，另外一些队列不支持延迟队列
               delayed-exchange: true  #这个属性设置为true的时候，rabbitmq创建队列的时候才会把type设置成delay-exchange
           requeue-topic-consumer:
             consumer:
-              requeue-rejected: true #设置重新入队操作
+              requeue-rejected: true #设置重新入队操作，这里配置才是核心
       bindings:
         #异常消息（单机版重试）
         error-retry-topic-consumer:
           #重试次数（本机重试 客户端消费者自己重试，与MQ已经无关了）
           consumer:
-            max-attempts: 1  #重试1次  等于1相当于不重试
+            max-attempts: 1  #重试1次  等于1相当于不重试 这个与下面的联机版重试有冲突，如果使用下面这种方式，那么此处配置要置为1
           destination: error-retry-topic
         error-retry-topic-producer:
           destination: error-retry-topic
