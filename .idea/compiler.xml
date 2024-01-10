@@ -8,30 +8,34 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="feign-client-intf" />
-        <module name="auth-service-api" />
         <module name="config-client" />
         <module name="gateway-sample" />
         <module name="eureka-server" />
-        <module name="stream-sample" />
         <module name="feign-client" />
         <module name="hystrix-turbine" />
-        <module name="config-server" />
         <module name="auth-service" />
+        <module name="eureka-server-peer" />
+        <module name="sleuth-traceA" />
+        <module name="sleuth-traceB" />
+        <module name="zipkin-server" />
+        <module name="config-bus-server" />
+        <module name="feign-client-intf" />
+        <module name="auth-service-api" />
+        <module name="stream-sample" />
+        <module name="config-server" />
         <module name="ribbon-consumer" />
         <module name="eureka-client" />
         <module name="config-bus-client" />
         <module name="hystrix-fallback" />
         <module name="config-server-eureka" />
-        <module name="eureka-server-peer" />
-        <module name="sleuth-traceA" />
-        <module name="sleuth-traceB" />
-        <module name="zipkin-server" />
         <module name="eureka-consumer" />
         <module name="feign-consumer" />
-        <module name="config-bus-server" />
         <module name="eureka-server-peer2" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="consumer" target="1.8" />
+      <module name="producer" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

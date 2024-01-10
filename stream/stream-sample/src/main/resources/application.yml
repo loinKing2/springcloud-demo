@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: stream-platform
+  rabbitmq:
+    port: 5672
+    virtual-host: /
+    host: localhost
+    username: guest
+    password: guest
+    listener:
+        default-requeue-rejected: true #全局的异常入队的设置，记住这里把max-attempts设置为1
+  cloud:
+    stream:
+      instance-count: 2  #实例个数
+      instance-index: 1 #当前实例索引
+      #延迟消息的配置
+      rabbit:
+        bindings:
+          delayed-topic-producer:
+            producer:
+              delayed-exchange: true  #这个属性设置为true的时候，rabbitmq创建队列的时候才会把type设置成delay-exchange
+          requeue-topic-consumer:
+            consumer:
+              requeue-rejected: true #设置重新入队操作
+      bindings:
+        #异常消息（单机版重试）
+        error-retry-topic-consumer:
+          #重试次数（本机重试 客户端消费者自己重试，与MQ已经无关了）
+          consumer:
+            max-attempts: 1  #重试1次  等于1相当于不重试
+          destination: error-retry-topic
+        error-retry-topic-producer:
+          destination: error-retry-topic
+        #异常消息（联机版重试，异常会重新入队，等待重新被消费）
+        requeue-topic-consumer:
+          destination: requeue_topic
+          group: requeue_group
+        requeue-topic-producer:
+          destination: requeue_topic
+        # 延迟消息的绑定
+        delayed-topic-consumer:
+          destination: delayed_topic
+        delayed-topic-producer:
+          destination: delayed_topic
+
+        group-topic-consumer:
+          destination: group-topic-service
+          group: service-group-B
+          consumer:
+            partitioned: true
+        group-topic-producer:
+          destination: group-topic-service
+          producer:
+            partition-count: 2
+            partition-key-expression: payload
+
+
+#配置actuator
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+
+#配置stream
+
