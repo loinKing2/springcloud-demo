@@ -27,6 +27,8 @@ public class TestController {
     private ReQueueTopic reQueueTopic;
     @Autowired
     private DLQTopic dlqTopic;
+    @Autowired
+    private FallbackTopic fallbackTopic;
 
     @GetMapping("/send")
     public String sendMessage(String payload){
@@ -102,6 +104,25 @@ public class TestController {
         MessageBean bean = new MessageBean();
         bean.setPayload(payload);
         dlqTopic.output().send(MessageBuilder.withPayload(bean).build());
+        return "success";
+    }
+
+
+    /**
+     * fallback测试 + 升版
+     * @param payload 有效载荷
+     * @param version 版本
+     * @return
+     */
+    @GetMapping("/sendMessageToFallback")
+    public String sendMessageToFallback(@RequestParam String payload,@RequestParam(name = "version",defaultValue = "1.0") String version){
+        MessageBean bean = new MessageBean();
+        bean.setPayload(payload);
+        //place order
+        //placeOrderV1  placeOrderV2
+        fallbackTopic.output().send(MessageBuilder.withPayload(bean)
+                        .setHeader("version",version)
+                        .build());
         return "success";
     }
 

@@ -16,6 +16,9 @@ spring:
       #延迟消息的配置
       rabbit:
         bindings:
+          dlqTopic-consumer:
+            consumer:
+              auto-bind-dlq: true  #这里一定要为消费端设置自动绑定dlq，才能启用死信队列
           delayed-topic-producer:
             producer:
               delayed-exchange: true  #这个属性设置为true的时候，rabbitmq创建队列的时候才会把type设置成delay-exchange
@@ -31,18 +34,39 @@ spring:
           destination: error-retry-topic
         error-retry-topic-producer:
           destination: error-retry-topic
+
         #异常消息（联机版重试，异常会重新入队，等待重新被消费）
         requeue-topic-consumer:
           destination: requeue_topic
           group: requeue_group
         requeue-topic-producer:
           destination: requeue_topic
+
         # 延迟消息的绑定
         delayed-topic-consumer:
           destination: delayed_topic
         delayed-topic-producer:
           destination: delayed_topic
 
+        #降级流程 fallback + 升级
+        fallback-topic-consumer:
+          destination: fallback_topic
+          consumer:
+            max-attempts: 2
+          group: fallback-group
+        fallback-topic-producer:
+          destination: fallback_topic
+
+        #死信队列配置
+        dlqTopic-consumer:
+          destination: dlq-topic
+          group: dlq-group
+          consumer:
+            max-attempts: 2 #最大尝试次数2次
+        dlqTopic-producer:
+          destination: dlq-topic
+
+        #单机消息
         group-topic-consumer:
           destination: group-topic-service
           group: service-group-B

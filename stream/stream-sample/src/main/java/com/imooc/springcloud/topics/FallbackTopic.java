@@ -8,11 +8,11 @@ import org.springframework.messaging.SubscribableChannel;
 /**
  * 死信队列
  */
-public interface DLQTopic {
+public interface FallbackTopic {
 
-    String input = "dlqTopic-consumer";
+    String input = "fallback-topic-consumer";
 
-    String output = "dlqTopic-producer";
+    String output = "fallback-topic-producer";
 
     //消息的消费端
     @Input(input)
